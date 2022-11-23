@@ -28,8 +28,6 @@ class RabbitGame:
     - d to go right
     - p (to pickup carrot) & (to drop carrot in the hole while standing next to it)
     - j to jump across hole
-
-
     """
     PATH = '-'
     START_POS = 0
@@ -144,21 +142,23 @@ class RabbitGame:
                 elif action == 'p':
                     self.pick_up_carrot()
 
-                elif action == 'esc':
+                elif action == keys.ESC:
                     break
 
-            # print(
-            #     "Would you like to start the game again?\n"
-            #     "For yes press Enter or any other key to exit", flush=True
-            # )
-            # action = ord(getch().lower())
-            # if action == 13:
-            #     self.start_game()
+            print(
+                "\nWould you like to start the game again?\n"
+                "For yes press Enter or any other key to exit", flush=True
+            )
+            action = getkey()
+            if action == keys.ENTER:
+                self.clear_terminal()
+                self.start_game()
 
         except KeyboardInterrupt:
             print("Exited game")
     
     def start_game(self) -> None:
+        print('Starting game press enter to begin.')
         while True:
             command = getkey()
             if command == keys.ENTER:
